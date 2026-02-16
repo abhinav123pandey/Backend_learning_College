@@ -1,0 +1,7 @@
+--------------Day 1 - Backend Development(Integraminds_class_work)--------------------
+
+
+
+1- Unix/Linux
+2- Linux Commonds
+3- Shell and Kernals Intro

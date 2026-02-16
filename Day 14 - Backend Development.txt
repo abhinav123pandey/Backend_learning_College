@@ -1,0 +1,147 @@
+---------------------------- Day 14 -------------------------------
+
+
+
+1- COMMONJS MODULE SYSTEM (DEFAULT IN NODE.JS)--
+    Used mainly in Node.js backend and Express applications.
+
+    A) EXPORT USING module.exports
+
+        math.js
+
+            function add(a, b) {
+            return a + b;
+            }
+
+            function subtract(a, b) {
+            return a - b;
+            }
+
+            module.exports = {
+            add: add,
+            subtract: subtract
+            };
+
+        IMPORT USING require()
+
+        index.js
+
+            const math = require("./math");
+
+            math.add(2, 3);
+            math.subtract(5, 2);
+
+    B) EXPORT USING exports KEYWORD (SHORTCUT)
+
+        math.js
+
+            exports.add = function(a, b) {
+            return a + b;
+            };
+
+            exports.subtract = function(a, b) {
+            return a - b;
+            };
+
+        index.js
+
+            const { add, subtract } = require("./math");
+
+            add(3, 4);
+            subtract(6, 2);
+
+            IMPORTANT RULE:
+            Do NOT reassign exports like this:
+            exports = {};
+
+            Always use:
+            exports.property = value;
+
+    C) EXPORTING A SINGLE FUNCTION OR CLASS
+
+        logger.js
+
+            module.exports = function log(message) {
+            console.log(message);
+            };
+
+        index.js
+
+            const log = require("./logger");
+
+            log("Server started");
+
+
+    Destructuring :-
+        It is a kind of method to import the different function in the file.
+        Eg- 
+            Type 1- 
+                //math.js
+                const add=(a,b)=>{
+                    return a+b;
+                }
+
+                const multi=(a,b)=>{
+                    return a*b;
+                }
+
+                module.exports={add,multi};
+
+                //index.js
+                const {add, multi} = require('./utils');
+
+                console.log("Add", add(2,3));
+                console.log("Multiplication",multi(2,3));
+
+
+            Type 2-
+                //math.js
+                const add=(a,b)=>{
+                    return a+b;
+                }
+
+                const multi=(a,b)=>{
+                    return a*b;
+                }
+
+                module.exports={add,multi};
+
+                //index.js
+                const fun = require('./utils');
+
+                console.log("Add", fun.add(2,3));
+                console.log("Multiplication",fun.multi(2,3));
+        
+        Type 3-
+                //math.js
+                const add=(a,b)=>{
+                    return a+b;
+                }
+
+                const multi=(a,b)=>{
+                    return a*b;
+                }
+
+                module.exports={add,multi};
+
+                //index.js
+                const {multi}=require('./utils');
+                const {add}=require('./utils');
+                console.log("Add", add(2,3));
+                console.log("Multiplication",multi(2,3));
+
+        It will give error -- 
+            const {add}=require('./utils');
+            console.log("Add", add(2,3));
+            const {multi}=require('./utils');
+            console.log("Multiplication",multi(2,3));
+
+            NOTE - Always import the functions on the top of the code file
+
+
+
+
+CASHING --
+
+    
+

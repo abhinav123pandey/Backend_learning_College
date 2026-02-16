@@ -1,0 +1,26 @@
+---------------------------------Day5--------------------------------
+
+whoami -- Gives the name of the user
+
+SUDO-
+    sudo adduser username -- creates and adds a new user
+
+    sudo passwd username -- to set the password
+
+    sudo usedel username -- to delete the user
+
+Switch Users-  su -username
+
+exit - to exit from current user(move to previous one)
+
+chown- changes the ownership of a particular file
+    eg- chown user file.txt
+
+Sleep- 
+    sleep seconds &  -- make the system sleep for the given seconds and see if there are any other Commonds to be precceded
+    sleep seconds -- make the system sleep for the given seconds
+
+bg -- shows the currect running Commonds in background.
+
+
+Shell Scripting -- 

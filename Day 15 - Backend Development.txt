@@ -1,0 +1,143 @@
+-------------------------------------- Day 15 -----------------------------------------------
+
+
+How Call Stack Works --
+
+Call Stack -- It works as a stack(lifo) but it seems and acts like it is working as queue(fifo) because it will hold only 1 commond at a time.
+
+const { useCallback } = require("react");
+
+const a = ()=>{
+    b();
+    console.log("a");
+};
+
+const b = () => {
+    console.log("b init");
+    setTimeout(()=>{
+        console.log("b process")
+    },0);
+    console.log("b ended");
+};
+
+a();
+console.log("Ended");
+
+//Empty Stack
+    // 1- a is pushed 
+    // 2- b is pushed
+    // 3- b is executed
+    // 4- register useCallback
+    // 5- b is poppped
+    // 6- a is poppped
+    // 7- last line executed
+
+
+// Example of holding maximum size in call stack
+const crash = () =>{
+    crash();
+}
+crash();
+
+
+NOTE -- See The callstack will be working as a stack but will act like a queue. But there is something called EventLoop which holds and handles the call back functions that comes during execution in the call stack.
+
+EVENT LOOP - It works as a queue, hold and handles the callBack function in it. But it also works on the priority bases. So there are 2 kinds of functions-
+
+1- MicroTasks -- Higher priority
+    Eg -  Promise.then(), queueMicrotask(), MutationObserver
+
+2- MacroTasks -- Lower priority
+    Eg- setTimeout, setInterval, setImmediate (Node.js), requestAnimationFrame, I/O events
+
+
+NOTE -- dekh agar tere kisi function me prebuilt callBacks(micro or macro) ke sath sath koi normal function bhi call kiya gaya ho to 2- cases hain-
+    a- agar notmal javascript mein hai to normal function callbackqueue mein chala jayega aur baki micro and macro eventLoop mein chale jayenge.
+    b- agar Node JS mein hai to normal callstack mei handle hoga aur micro / macro dono hi pehle node environment mein jayenge phir evenLoop unko manage karega 
+
+
+CALLBACK functions -- 
+
+    1. Definition - 
+        A callback function is a function that is passed as an argument to another function and is executed later inside that function.
+
+    2. Why We Use Callback - 
+        To handle asynchronous operations (API calls, file reading, timers)
+        To customize function behavior
+        To execute code after a task completes
+
+    3. Basic Example
+        function greet(name, callback) {
+            console.log("Hello " + name);
+            callback();
+        }
+
+        function sayBye() {
+            console.log("Goodbye!");
+        }
+
+        greet("Abhinav", sayBye);
+
+
+        Output:
+
+        Hello Abhinav
+        Goodbye!
+
+    4. Types of Callback Functions
+        1. Synchronous Callback - Executed immediately during function execution.
+
+            let numbers = [1, 2, 3];
+
+            numbers.forEach(function(num) {
+                console.log(num);
+            });
+
+
+            forEach() uses a synchronous callback.
+
+    2. Asynchronous Callback - Executed after some delay or async operation.
+
+        setTimeout(function() {
+            console.log("Executed after 2 seconds");
+        }, 2000);
+
+
+        setTimeout() uses an asynchronous callback.
+
+    3. Named Callback - A separately defined function passed as argument.
+
+        function display() {
+            console.log("Done");
+        }
+
+        setTimeout(display, 1000);
+
+    4. Anonymous Callback - Function without a name.
+
+        setTimeout(function() {
+            console.log("Done");
+        }, 1000);
+
+    5. Arrow Function Callback - Modern ES6 syntax.
+
+        setTimeout(() => {
+            console.log("Done");
+        }, 1000);
+
+    5. Callback Hell - When multiple nested callbacks make code hard to read.
+
+    doSomething(function() {
+        doSomethingElse(function() {
+            doAnotherThing(function() {
+                console.log("Finished");
+            });
+        });
+    });
+
+
+    Solution: Use Promises or Async/Await
+
+
+
+

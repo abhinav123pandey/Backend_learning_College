@@ -1,0 +1,17 @@
+-------------------- Day 9 ---------------------------------
+
+GitHub -- It is a cloud based plateform which is used to manage different projects and allow people to see your project. The project can also be developed in colaborations as well on this plateform.
+
+Repository -- A specific(online cloude based) folder type space which holds you project.
+
+push -- push is used to take your code on github from local system.
+    Eg- git push -u origin main --For First time use(-u is used first time after that you can avoid it)
+        git push origin main
+
+    origin -- it shows the location of the git Repository
+    main -- representaion of the branch in which you want to push your code
+
+pull -- it is used to 'fetch' the changed content of previous branch(if the branches are intiated with git branch <branchname>)
+    Eg- git pull origin main
+
+fetch -- 

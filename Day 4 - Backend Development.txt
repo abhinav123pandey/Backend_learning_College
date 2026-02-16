@@ -1,0 +1,21 @@
+---------------------------Day 4-----------------------------
+
+//grep Commonds
+grep -- used to find the file content based on given pattern
+    eg- grep "Pattern" filename
+
+grep -i "pattern" *.txt -- case insensitive - means it will return the files wheather, they would be having "Pattern" or "pattern".
+
+grep -ri "pattern" rootFolder/ -- It is being given from the root directory. It returns each and every directory with the matching pattern
+
+grep -n "pattern" *.txt  -- return the line no. of matched pattern
+
+grep -rI "pattern" rootFolder/ -- It is also operated from root folder and it returns the matched pattern files and avoids binary files and images
+
+grep -E "(pattern1|pattern2|pattern3)" rootFolder/ -- It is also operated form rootFolder and return the file that matches the regular expression.
+
+grep -rE "(pattern1|pattern2|pattern3)" rootFolder/ -- It is also operated form rootFolder and return the file recursively that matches the regular expression.
+
+//find
+
+HW-  Search about find

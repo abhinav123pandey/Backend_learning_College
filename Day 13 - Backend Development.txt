@@ -1,0 +1,169 @@
+------------------------------- Day 13 -----------------------------------------
+
+.gitingore --- By putting the names of the files and the folders that you don't want to pushed on github 
+
+
+Path -- A way to a particular file or directory
+
+
+Path Module - 
+    The path module in Node.js is a built-in utility that helps you work with file and directory paths in a way that is consistent across operating systems.
+
+    Importing -- 
+        const path = require('path'); -- in  CommonJS
+        or
+        import path from 'path'; in ES Modules (Node.js 14+ with "type": "module")
+
+    Path functions--
+
+        1- join -- joins and makes the path for the given folder and file name=
+            eg - a- path.join("foldername", "filename");
+                 b- path.join("foldername","..","filename") -- ".." are used to go 1 level down
+
+            Code- 
+            //1- 
+                const filePath = path.join("functions", "file.js");
+
+                fs.readFile(filePath,"utf-8",(err, content)=>{
+                    console.log("content", content);
+                })
+
+            //2-
+                const filePath1 = path.join("functions","..", "utils.js");
+
+                fs.readFile(filePath1,"utf-8",(err, content)=>{
+                    console.log("content", content);
+                })
+
+        2. __dirname
+                Definition
+
+                __dirname current file ke folder (directory) ka absolute path deta hai.
+
+                Points
+
+                Sirf directory ka path
+
+                File name include nahi hota
+
+                Har file ke liye alag value hoti hai
+
+                Example
+                console.log(__dirname);
+
+                Output
+                C:\Project\nodeApp
+
+        3. __filename
+                Definition
+
+                __filename current file ka absolute path with file name deta hai.
+
+                Points
+
+                Folder + file name
+
+                Debugging ke liye useful
+
+                Example
+                console.log(__filename);
+
+                Output
+                C:\Project\nodeApp\index.js
+
+        4. path.resolve()
+                Definition
+
+                path.resolve() multiple path segments ko combine karke absolute path return karta hai.
+
+                Syntax
+                path.resolve(path1, path2, ...)
+
+                Example
+                path.resolve("src", "utils", "file.js");
+
+                Output
+                C:\Project\nodeApp\src\utils\file.js
+
+                With __dirname
+                path.resolve(__dirname, "public", "index.html");
+
+                Notes
+
+                Absolute path hamesha return karta hai
+
+                Production apps mein preferred
+
+                Secure and OS independent
+
+        5. path.join()
+                Definition
+
+                path.join() multiple paths ko join karta hai aur clean path banata hai.
+
+                Syntax
+                path.join(path1, path2, ...)
+
+                Example
+                path.join("src", "controllers", "user.js");
+
+                Output
+                src\controllers\user.js
+
+                Notes
+
+                Relative ya absolute dono ho sakta hai
+
+                Extra / ko automatically remove karta hai
+
+        6. path.extname()
+                Definition
+
+                path.extname() file ka extension return karta hai.
+
+                Syntax
+                path.extname(path);
+
+                Example
+                path.extname("app.js");
+
+                Output
+                .js
+
+                With __filename
+                path.extname(__filename);
+
+        7. path.basename()
+                Definition
+
+                path.basename() path se last part (file name) return karta hai.
+
+                Example
+                path.basename("/user/home/index.js");
+
+                Output
+                index.js
+
+        8. path.dirname()
+                Definition
+
+                path.dirname() kisi path ka directory part return karta hai.
+
+                Example
+                path.dirname("/user/home/index.js");
+
+                Output
+                /user/home
+
+OS Module -- give the information about your operating system
+
+    Code with explaination--
+        const os=require('os');
+
+        console.log("Plateform", os.platform); -- gives the plateform
+        console.log("arch",os.arch()); 
+        console.log("Memory",os.freemem());
+        console.log("cpu",os.cpus());
+
+        const freeMemoryInGb =(os.freemem()/1024/1024/1024);
+        console.log("Free memory in Gb",freeMemoryInGb);

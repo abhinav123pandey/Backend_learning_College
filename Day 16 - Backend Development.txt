@@ -1,0 +1,99 @@
+------------------------------------ Day 16 -----------------------------------------------
+
+
+Promise  -- It provides us a future value. There are two particular cases --
+    1- Success(resolve) -- Data is Available
+    2- Failure(reject) -- Data is not Available
+
+    So basically it creates a timeout during fetching the data.
+
+    Declaration --
+        const newProm = new Promise(()=>{});
+
+        Note - new is used for declaring a new promise, otherwise even if the new promise is created without "new", it will refer to the previous promise.
+
+
+    Code Explaination -- 
+    const fetchData = new Promise((resolve, reject)=>{
+    const success = false;
+
+    if(success){
+        resolve();
+        console.log("Data found");
+    }
+    else{
+        reject();
+        console.log("Data not found");
+    }
+}).catch(console.log("Data not found catched"));
+
+Note - 1- ham promise use nahi karte hain ab modern day development mein, kyuki iska syntax thoda old style hai.
+Most IMP Note - ".then"  only works in case of promises
+
+CallBack Hell --  When you call the multiple function from the functions.
+    As solution, we use chaining method.
+
+    Code explaination -- 
+        const login = () => {
+            return new Promise((resolve) => {
+                resolve(true);
+            });
+        };
+
+        const userName = () => {
+            return new Promise((resolve) => {
+                resolve("Abhinav");
+            });
+        };
+
+        const welcome = (username) => {
+            return new Promise((resolve) => {
+                resolve("Welcome! " + username);
+            });
+        };
+
+        -- This situation creates CallBack Hell --
+        login().then(() => {
+            console.log("user logged in!");
+            userName().then((res) => {
+                console.log(res);
+                welcome(res).then((msg) => {
+                    console.log(msg);
+                });
+            });
+        });
+
+        ----- Solution for CallBack Hell -----
+        login() .then(() => { 
+            console.log("user logged in!");
+            return userName(); 
+            }) 
+            .then((name) => {
+                console.log(name); 
+                return welcome(name);
+                }) 
+                .then((msg) => { 
+                    console.log(msg);
+                }) 
+                    .catch((err) => { 
+                        console.error(err); 
+                    });
+
+
+
+
+o> USE OF async and await in place of Promises.
+
+const example=async()=>{
+        console.log("Started");
+        await fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then((resp)=> resp.json())
+            .then((json)=> console.log(json));
+        console.log("Ended");
+    };
+
+    console.log("Started -------1");
+    example();
+    console.log("Started -------2");
+
+    

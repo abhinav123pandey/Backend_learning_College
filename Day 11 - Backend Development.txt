@@ -1,0 +1,70 @@
+---------------------------------Day 11 -----------------------------------
+
+
+Single Thread
+    Definition: One sequence of instructions executed at a time.
+
+    Explanation: Only one task runs; if it blocks (like waiting for I/O), the whole program pauses.
+
+Multi Thread
+    Definition: Multiple threads (execution paths) run within a process.
+
+    Explanation: Tasks can run in parallel, improving performance, but need synchronization to avoid conflicts.
+
+Event Loop
+    Definition: A mechanism that manages asynchronous tasks in a single thread.
+
+    Explanation: Continuously checks a queue of events/callbacks and executes them, allowing non-blocking I/O without freezing the program.
+
+V8 Engine
+    Definition: Google’s open-source JavaScript and WebAssembly engine, written in C++.
+
+    Explanation: Compiles JavaScript into machine code for speed, powers Chrome and Node.js, and supports asynchronous execution via the event loop.
+
+ 
+NPM (Node Package Manager)--
+    Definition: NPM is the default package manager for Node.js, used to install, share, and manage JavaScript libraries and tools.
+
+    Explanation:
+
+        It provides a huge registry of open‑source packages.
+
+        Developers use it to add dependencies (like Express, React) to their projects.
+
+        It also manages versioning and scripts, making project setup and automation easier.
+
+    Command examples:
+
+        npm install <package> → installs a package.
+
+        npm init → creates a new project with a package.json file.
+
+
+package.json --
+    Definition: A JSON file that holds metadata about a Node.js  project.
+
+    Explanation:
+
+        It describes the project (name, version, author, license).
+
+        Lists dependencies (libraries installed via NPM).
+
+        Defines scripts (like npm start, npm test) for automation.
+
+        Helps NPM and other tools manage, install, and run the project consistently.
+
+
+    Dependencies -- the modules and libraries that are need of our project(nessesary) will be shown in dependencies
+
+    Dev-Dependencies -- the modules and libraries that we don't know that are are used by our project or the modules are't that important, we keep it in dev-dependencies
+
+    scripts -- Custom commands for a particular Purpose(only for automatic tasks)
+
+    nodemon -- it re-starts the file whenever we make any change in the file
+
+    nvm -- (Node Version Manager) used to mange the versions of Node, you can install any version of the node and use them
+        Eg- nvm install 22 - version 22 will be installed
+            npm use 22 - you will start using 22 version of node
+
+
+    

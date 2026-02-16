@@ -1,0 +1,46 @@
+------------------------ Day 7 -----------------------
+
+Git & GitHub--
+
+
+Git - Git is a distributed version control system installed locally to track code changes
+
+GitHub - GitHub is a cloud-based platform that hosts Git repositories and adds collaboration features like pull requests, issue tracking, and team management
+
+Branch -- A branch is a lightweight movable pointer to a commit. It represents an independent line of development in your repository
+
+LF -- just a newline (\n) → Linux/macOS.
+
+CRLF -- carriage return + newline (\r\n) → Windows.
+
+They both mean “end of line,” but in different formats depending on the operating system.
+
+Basic Git Commonds--
+1- init - To initialize the the git in you project folder
+    eg- git init
+
+2- add - to add a file in git knowlodge(or let the git track your line)
+    eg- git add filename
+
+3- status - to check the status of you folder(means how muchh git have tracked and what is remainig)
+    eg - git status
+
+4- commit - to make the commit for the current push(means you are giving permission to another user/collaborator to see the changes you made) with a messege
+    eg - git commit -m "messege"
+
+    m - stands for messgge
+
+5- diff - to see the changes you made previously(matlab tumhari branch pe aur tumhare local git mein kya changes hai ye diff batata hai)
+    eg - git diff filename  or git diff(for single file in you folder)
+
+4- log - shows the history of the commits in you projects
+    eg - git log 
+
+5- reset - resets the previous commit(or moves the HEAD to the previous commit)
+    It have multiple types(mainly 3 types used)-
+    (i)- soft reset --Moves HEAD to the given commit, but keeps changes staged (index + working directory unchanged).Undo a commit but keep all changes ready to recommit.\
+    (ii) - hard reset -- it also makes the changes in the file for last commit 
+
+
+
+

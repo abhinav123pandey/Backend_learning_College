@@ -1,0 +1,48 @@
+-------Day 2---------
+
+Path- A path is a string that tells the system how to reach a file or directory starting from a reference point.
+Linux filesystem is a single-root tree, starting at /.
+
+Types Of Path-
+1. Absolute Path- Starts from root / and gives the full location.
+    Example:
+        /home/abhinav/projects/app.js
+
+
+2- Relative Path- Relative to your current directory and it's child directories 
+    Example:
+        l1/l2/l3
+    
+    Doesn't start from root '/' directory
+
+//Use of CD with different levels
+cd . - current directory
+cd .. - parent directory
+cd - previous directory(Toggling btw last 2 directories)
+cd ~ Go To Root directory
+
+//Creation and Deletion of directories in levels
+
+//Creation
+mkdir l1 l2 l3 l4 -- creation at same levels
+mkdir l1/l2/l3/l4 -- creation at parent/child level
+
+//Deletion
+rm -ri dirname -- will as for the permission of you want to delete even the parent directories or not
+rm -r dirname -- deletes complete directory with parent directories 
+
+//Creation of files
+touch filename
+touch file1 file2
+
+//inode
+Each and every file has a unique id, that is called inode
+ls -i -- it is used to see the id's of the files available
+
+//Linking of files
+The files can be linked, so your content could be saved in another linked file.
+
+ln file1 file2-  Here the content of file1 will be automatically shown in file2
+
+
+HW - How to write in the file and how can we read it

@@ -1,0 +1,206 @@
+-------------------------Day 12 ------------------------------
+
+Export and Import --
+
+WHAT IS A MODULE?
+    In Node.js, every file is treated as a module.
+    Export and import are used to share code between different files.
+
+1- COMMONJS MODULE SYSTEM (DEFAULT IN NODE.JS)--
+    Used mainly in Node.js backend and Express applications.
+
+    A) EXPORT USING module.exports
+
+        math.js
+
+            function add(a, b) {
+            return a + b;
+            }
+
+            function subtract(a, b) {
+            return a - b;
+            }
+
+            module.exports = {
+            add: add,
+            subtract: subtract
+            };
+
+        IMPORT USING require()
+
+        index.js
+
+            const math = require("./math");
+
+            math.add(2, 3);
+            math.subtract(5, 2);
+
+    B) EXPORT USING exports KEYWORD (SHORTCUT)
+
+        math.js
+
+            exports.add = function(a, b) {
+            return a + b;
+            };
+
+            exports.subtract = function(a, b) {
+            return a - b;
+            };
+
+        index.js
+
+            const { add, subtract } = require("./math");
+
+            add(3, 4);
+            subtract(6, 2);
+
+            IMPORTANT RULE:
+            Do NOT reassign exports like this:
+            exports = {};
+
+            Always use:
+            exports.property = value;
+
+    C) EXPORTING A SINGLE FUNCTION OR CLASS
+
+        logger.js
+
+            module.exports = function log(message) {
+            console.log(message);
+            };
+
+        index.js
+
+            const log = require("./logger");
+
+            log("Server started");
+
+2- ES MODULES (MODERN JAVASCRIPT)
+    Used in frontend frameworks and modern Node.js projects.
+
+    ENABLE ES MODULES
+
+        package.json
+
+        {
+        "type": "module"
+        }
+
+    A) NAMED EXPORT
+
+        math.js
+
+            export function add(a, b) {
+            return a + b;
+            }
+
+            export function subtract(a, b) {
+            return a - b;
+            }
+
+        index.js
+
+            import { add, subtract } from "./math.js";
+
+            add(2, 3);
+            subtract(7, 4);
+
+    B) DEFAULT EXPORT (ONLY ONE PER FILE)
+
+        logger.js
+
+            export default function log(message) {
+            console.log(message);
+            }
+
+        index.js
+
+            import log from "./logger.js";
+
+            log("Application started");
+
+    C) DEFAULT AND NAMED EXPORT TOGETHER
+
+        math.js
+
+            export default function multiply(a, b) {
+            return a * b;
+            }
+
+            export function add(a, b) {
+            return a + b;
+            }
+
+        index.js
+
+            import multiply, { add } from "./math.js";
+
+            multiply(2, 3);
+            add(4, 5);
+
+    D) IMPORT EVERYTHING AS OBJECT
+
+    index.js
+
+        import * as math from "./math.js";
+
+        math.add(2, 3);
+
+
+
+FS(File System Module)-- used to manage the files and it's operations
+
+    sync - it executes the script file line by line so it is blocking(means ye kisi bhi file ke read write hone mein wait karenga)
+    async - it is non blocking(means kisi bhi file read write operations ke liye wait nahi karega). it keeps executing the files.
+
+    utf(Unicode Transformation Format)-
+        UTF is a character encoding standard that converts Unicode characters into binary form so that computers can store, process, and display text from all languages correctly (including English, Hindi, emojis, symbols, etc.).
+
+    1- Operations in Sync --
+
+        const readFile = ()=>{
+            //reading file Content
+            const fileContent = fs.readFileSync("file.txt","utf-8");
+            console.log("File Content:",fileContent);
+
+            //wrting new content
+            fs.writeFileSync("file.txt","New Content written");
+            const newFileContent = fs.readFileSync("file.txt","utf-8");
+            console.log("New File Content: ",newFileContent);
+
+            //append new content in the file
+            fs.appendFileSync("file.txt","\nNew Line");
+            const newAppendedContent = fs.readFileSync("file.txt","utf-8")
+            console.log("Appended Content: ",newAppendedContent);
+        } 
+
+    2- Operations in Async --
+        const fs = require("fs");
+
+        const readAsyncFile = () => {
+        fs.readFile("file.txt", "utf-8", (err, data) => {
+            if (err) throw err;
+            console.log("File Content:", data);
+
+            fs.writeFile("file.txt", "New Content written", (err) => {
+            if (err) throw err;
+
+            fs.readFile("file.txt", "utf-8", (err, newData) => {
+                if (err) throw err;
+                console.log("New File Content:", newData);
+
+                fs.appendFile("file.txt", "\nNew Line", (err) => {
+                if (err) throw err;
+
+                fs.readFile("file.txt", "utf-8", (err, finalData) => {
+                    if (err) throw err;
+                    console.log("Appended Content:", finalData);
+                });
+                });
+            });
+            });
+        });
+        };
+
+        readAsyncFile();
+

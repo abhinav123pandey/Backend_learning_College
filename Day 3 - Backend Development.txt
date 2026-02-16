@@ -1,0 +1,89 @@
+----------------Day 3---------------
+
+echo -- used to write some content in the file
+    eg- echo "Content" filename
+
+cat -- To see the file content on terminal or  To create a new file with contents. 
+    eg- cat filename
+
+ls -l -- show the directories in detail(eg- owner, group,)
+
+
+#PERMISSIONS
+There is alwyas a 10 length String detailing about owner ,group, other permission and file Type.
+
+1->  -  --------------------- File Type
+2-4-> rw-  ------------------ Owner permission
+5-7-> r--  ------------------ Group permission
+8-10 -> r-- ----------------- Other permission
+
+Practice -- 
+
+PS C:\WINDOWS\system32> wsl
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+abhinav_pandey@LAPTOP-B6UIUODN:/mnt/c/WINDOWS/system32$ cd ~
+abhinav_pandey@LAPTOP-B6UIUODN:~$ mkdir test
+abhinav_pandey@LAPTOP-B6UIUODN:~$ cd test
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ cat Sample Content file.txt
+cat: Sample: No such file or directory
+cat: Content: No such file or directory
+cat: file.txt: No such file or directory
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ touch file.txt
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ cat Sample Content file.txt
+cat: Sample: No such file or directory
+cat: Content: No such file or directory
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ echo Sample Content file.txt
+Sample Content file.txt
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ chmod 444 file.txt
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ ls -l
+total 0
+-r--r--r-- 1 abhinav_pandey abhinav_pandey 0 Jan  9 09:40 file.txt
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ chmod u+w file.txt
+abhinav_pandey@LAPTOP-B6UIUODN:~/test$ ls -l
+total 0
+-rw-r--r-- 1 abhinav_pandey abhinav_pandey 0 Jan  9 09:40 file.txt
+
+
+-r    --    r   --   r---
+ |          |        |
+(user)      |        |
+          (group)    |
+                    (file detail)
+
+chmod - change mode(used to change the mode(exis allowence) to the user and group)
+eg-  chmod 444 filename- sets the permission of reading
+
+
+
+🔢 Mapping ls -l to Numbers
+Each permission triplet (rwx) is converted into a number:
+
+r = 4, w = 2, x = 1
+
+Add them up for each category (user, group, others).
+
+📊 Examples
+ls -l Output    User       Group      Others     Octal Number
+-r--r--r--      r-- (4)    r-- (4)    r-- (4)    444
+-rw-r--r--      rw- (6)    r-- (4)    r-- (4)    644
+-rwxr-xr-x      rwx (7)    r-x (5)    r-x (5)    755
+-rw-------      rw- (6)    --- (0)    --- (0)    600
+-rwx------      rwx (7)    --- (0)    --- (0)    700
+-rwxrwxrwx      rwx (7)    rwx (7)    rwx (7)    777
+📝 Quick Formula
+Take the three groups (user, group, others):
+
+Code
+rwx rwx rwx
+↓   ↓   ↓
+7   7   7   → chmod 777
+So for -r--r--r--:
+
+User = r-- = 4
+
+Group = r-- = 4
+
+Others = r-- = 4
+👉 chmod 444

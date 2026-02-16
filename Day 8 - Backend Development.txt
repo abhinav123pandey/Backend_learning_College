@@ -1,0 +1,34 @@
+------------------------ Day-8 --------------------------
+
+log - shows the history of the commits in you projects
+    eg - git log or git log --oneline
+
+revert -- It undoes a commit safely by creating a new commit that reverses the changes. It needs the hash value of the previous commit (which you want to revert)
+    eg- git revert <commit hash value>
+
+Difference between revert and reset--
+- reset = rewrite history (local use).
+- revert = preserve history (team-safe).
+
+Branch -- It is a particular space or a seprate line to work for a particular feature of the project
+
+Commonds for Branch--
+    1- git branch <branch name> -- to create a new branch
+    2- git checkout <branch name> -- to switch to a branch
+    3- git switch <branch name> -- to switch to a branch
+    4- git checkout -b <branch name> -- to create a new branch switch on that branch
+
+merge -- It merges the other branches with the main branch so that if there would be any geunin change, it will show on main branch
+    eg- git merge <featured branch>
+Rule-> 1-without staging and commiting in current branch moving to the next branch 
+        2- conflicts tabhi arraive hote hain jab kisi branch ne master ya main branch ki initial line(jo lines maujud hai) ko change kar diya hai
+
+Explaniton of branch tactics-
+    maan lo tum 3 branches pe kaam kar rahe ho jisme 1 master ya main branch hai aur 2 supporting branch. agar tune branch 1 main kuchh changes kiye to vo branch 2 pe nahi dikhenge but master pe dikhenge. branch 2 pe changes dekhne ke liye tujhe branch 2 pe rebase karna hoga master knowlodge
+
+
+rebase - used to update the content of current branch in repect to master or main branch
+
+next class- pull, push etc...
+ 
+
