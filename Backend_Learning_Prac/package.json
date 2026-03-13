@@ -4,11 +4,11 @@
   "description": "A Node Practice Project",
   "license": "ISC",
   "author": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "file.js",
   "scripts": {
     "start": "node file.js",
-    "dev":"nodemon file.js",
+    "dev": "nodemon file.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

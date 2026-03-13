@@ -1,0 +1,55 @@
+------------------------------- Day 17 ---------------------------------------
+
+
+Setup of a SERVER --
+
+    http module -- it is used to create server and manage it.
+
+    SERVER CREATION -- 
+    
+
+    const { log } = require('console');
+    const http = require('http');
+
+    const server = http.createServer((request,response)=>{
+        const requestURL = request.url;  -- 
+        const requestMethod = request.method;
+
+        console.log(requestURL);
+        console.log(requestMethod);
+        response.end("Hello World!");
+    })
+
+    server.listen(3000);
+
+
+    NOTE - You can create the servers using http module but you have to handle the routes manually. That's why we use experss();
+
+    ROUTE HANDLING (MANUALY)-
+
+    const http = require('http');
+const os = require('os');
+
+const server = http.createServer((request,response)=>{
+    const requestURL = request.url;
+    const requestMethod = request.method;
+
+    console.log(requestURL);
+    console.log(requestMethod);
+
+    if(requestURL === '/home'){
+        response.end("Home Page");
+    }
+    if(requestURL === '/users'){
+        response.end("List of Users");
+    }
+    if(requestURL === '/configSystem'){
+        response.end(`Free Memory ${os.freemem/1024/1024}`);
+    }
+    })
+
+    server.listen(3000);
+    
+
+Task 1- make a log file to store all the request url. And show them in log route
+

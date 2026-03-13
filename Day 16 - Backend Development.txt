@@ -83,17 +83,40 @@ CallBack Hell --  When you call the multiple function from the functions.
 
 
 o> USE OF async and await in place of Promises.
+    const example=async()=>{
+            console.log("Started");
+            await fetch("https://jsonplaceholder.typicode.com/posts/1")
+                .then((resp)=> resp.json())
+                .then((json)=> console.log(json));
+            console.log("Ended");
+        };
 
-const example=async()=>{
-        console.log("Started");
-        await fetch("https://jsonplaceholder.typicode.com/posts/1")
-            .then((resp)=> resp.json())
-            .then((json)=> console.log(json));
-        console.log("Ended");
-    };
+        console.log("Started -------1");
+        example();
+        console.log("Started -------2");
 
-    console.log("Started -------1");
-    example();
-    console.log("Started -------2");
 
-    
+// process.argv[index] -- it is used to take the input from the terminal commond. ye terminal se input lega aue then you can work on them.
+    Syntex --
+    [
+    "node",
+    "filename.js",
+    "add", // jo bhi operation karna chahte ho
+    "1",
+    "2"
+    ]
+
+
+    -- How to use
+    const pr = process.argv[2];
+    const value1 = process.argv[3];
+    const value2 = process.argv[4];
+
+    if(pr == "add"){
+        console.log(Number(value1)+Number(value2));
+    }
+
+    if(pr == "mul"){
+        console.log(Number(value1)*Number(value2));
+    }
+

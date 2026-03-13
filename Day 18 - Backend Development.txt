@@ -1,0 +1,72 @@
+------------------------------------ Day 18 ---------------------------------------------
+
+Architecture -- The Architecture is followed to develop a full-scale project.
+
+MVC - Model View Controller
+    Model      -> Handles data, logic, and database operations
+    View       -> Manages the user interface and presentation layer
+    Controller -> Processes requests and coordinates between Model & View
+
+Express - A framework which is an extended version of Node operations.
+
+    o> Express Architecture Flow:
+
+        Client
+        |
+        Request
+        |
+        Express Server
+        |
+        Controller
+        |
+        Model
+        |
+        Database
+        |
+        Response
+        |
+        Client
+
+
+    o> Ideal Backend Folder Architecture --
+
+            1- index/server file
+            2- Controllers Folder
+            3- Modules Folder
+            4- Routes Folder
+            5- Middlewares Folder
+            6- app.js
+            7- Other Meta Files
+
+        
+
+    NOTE -- See Day 7 of practicals to get each and every thing about basic structure and uses in backend.
+
+    HTTP Methods (Important for Backend-Frontend Communication)
+
+    GET  -- Used when the frontend expects data or a response from the backend.
+            Example: Fetching user details, product lists, etc.
+            Characteristics:
+                - Request data from the server
+                - No modification of server data
+                - Idempotent (same request → same result)
+
+    POST -- Used when the frontend sends data to the backend to save or perform operations.
+            Example: Creating a new user, submitting a form, saving data.
+            Characteristics:
+                - Sends data to the server
+                - Creates or modifies resources
+                - Not idempotent (same request → different results possible)
+
+    Other Important Methods:
+
+    PUT   -- Used to update/replace an existing resource completely.
+            Example: Updating a user profile with new details.
+
+    PATCH -- Used to partially update an existing resource.
+            Example: Updating only the email field of a user.
+
+    DELETE -- Used to remove a resource from the server.
+            Example: Deleting a user account or removing a product.
+
+

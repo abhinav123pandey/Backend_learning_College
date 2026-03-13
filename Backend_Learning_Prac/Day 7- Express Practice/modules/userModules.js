@@ -1,0 +1,28 @@
+const userList = [
+    {
+        id:1,
+        name:"Sample 1"
+    },
+     {
+        id:2,
+        name:"Sample 2"
+    },
+     {
+        id:3,
+        name:"Sample 3"
+    },
+     {
+        id:4,
+        name:"Sample 4"
+    },
+     {
+        id:5,
+        name:"Sample 5"
+    },
+     {
+        id:6,
+        name:"Sample 6"
+    }
+]
+
+module.exports = userList;
